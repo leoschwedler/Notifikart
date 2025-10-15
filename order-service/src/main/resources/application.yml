@@ -1,19 +1,19 @@
 spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: notificart
 
-  datasource:
-    url: jdbc:postgresql://localhost:5434/order-db
-    username: leozinho
-    password: 123
-    driver-class-name: org.postgresql.Driver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/notificart
 
-  jpa:
-    open-in-view: false
-    show-sql: true
-    hibernate:
-      ddl-auto: validate
-    properties:
-      hibernate:
-        format_sql: true;
+kafka:
+  url: localhost:9092
+  topic: notification-topic
 
-  flyway:
-    enabled: true
+server:
+  port: 8082
