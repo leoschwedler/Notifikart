@@ -1,10 +1,10 @@
-package order_service.dto;
+package com.schwedlermobile.notification_service.dto;
 
+import com.schwedlermobile.notification_service.enums.OrderEvent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import order_service.enums.OrderEvent;
 
 @Builder
 @Data

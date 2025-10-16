@@ -28,6 +28,8 @@ public class CreateOrderService {
         order.setStatus(OrderStatus.CREATED);
         order.setCreatedAt(LocalDateTime.now());
         order.setUpdatedAt(LocalDateTime.now());
+
+        order = repository.save(order);
         producer.sendNotification(
                 NotificationMessageDto.builder()
                         .orderId(order.getId())
@@ -35,7 +37,6 @@ public class CreateOrderService {
                         .event(OrderEvent.CREATE)
                         .build()
         );
-        order = repository.save(order);
         return OrderMapper.toResponse(order);
     }
 }

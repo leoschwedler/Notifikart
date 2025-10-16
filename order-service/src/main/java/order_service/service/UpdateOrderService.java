@@ -33,14 +33,14 @@ public class UpdateOrderService {
         OrderStatus orderStatus = service.processEvent(order.getStatus(), request.getOrderEvent());
         order.setStatus(orderStatus);
         order.setUpdatedAt(LocalDateTime.now());
+        order = repository.save(order);
         producer.sendNotification(
                 NotificationMessageDto.builder()
                         .orderId(order.getId())
-                        .message("New order created")
+                        .message("Order status updated to " + orderStatus)
                         .event(OrderEvent.CREATE)
                         .build()
         );
-        order = repository.save(order);
         return OrderMapper.toResponse(order);
     }
 }
