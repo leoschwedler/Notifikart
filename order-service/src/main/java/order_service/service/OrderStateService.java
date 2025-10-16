@@ -1,6 +1,7 @@
 package order_service.service;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import order_service.enums.OrderEvent;
 import order_service.enums.OrderStatus;
 import org.springframework.statemachine.StateMachine;
@@ -8,7 +9,7 @@ import org.springframework.statemachine.support.DefaultStateMachineContext;
 import org.springframework.stereotype.Service;
 
 @Service
-@Data
+@RequiredArgsConstructor
 public class OrderStateService {
 
     private final StateMachine<OrderStatus, OrderEvent> stateMachine;
